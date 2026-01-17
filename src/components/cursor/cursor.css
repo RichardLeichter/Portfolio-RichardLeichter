@@ -1,0 +1,25 @@
+#cursor-dot {
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    margin-left: -2.5px;
+    margin-top: -2.5px;
+}
+#cursor-outline {
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    transition: transform 0.2s ease-out, background 0.2s ease-out;
+}
