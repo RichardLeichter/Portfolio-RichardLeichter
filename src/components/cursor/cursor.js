@@ -12,7 +12,7 @@ document.addEventListener('mousemove', (e) => {
     setTimeout(() => {
         outline.style.left = `${posX - 15}px`;
         outline.style.top = `${posY - 15}px`;
-    }, 40);
+    }, 50);
 });
 
 interactiveElements.forEach(el => {

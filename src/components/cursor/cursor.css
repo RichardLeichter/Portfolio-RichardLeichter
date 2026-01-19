@@ -1,7 +1,7 @@
 #cursor-dot {
-    width: 5px;
-    height: 5px;
-    background-color: black;
+    width: 6px;
+    height: 6px;
+    background-color: #ff4f00;
     position: fixed;
     top: 0;
     left: 0;
