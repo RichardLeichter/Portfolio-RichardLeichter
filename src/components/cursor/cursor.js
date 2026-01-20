@@ -2,18 +2,29 @@ const dot = document.getElementById('cursor-dot');
 const outline = document.getElementById('cursor-outline');
 const interactiveElements = document.querySelectorAll('a, button');
 
+let mouseX = 0;
+let mouseY = 0;
+let outlineX = 0;
+let outlineY = 0;
+
 document.addEventListener('mousemove', (e) => {
-    const posX = e.clientX;
-    const posY = e.clientY;
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 
-    dot.style.left = `${posX}px`;
-    dot.style.top = `${posY}px`;
-
-    setTimeout(() => {
-        outline.style.left = `${posX - 15}px`;
-        outline.style.top = `${posY - 15}px`;
-    }, 50);
+    dot.style.left = `${mouseX}px`;
+    dot.style.top = `${mouseY}px`;
 });
+
+function animate() {
+    outlineX += (mouseX - outlineX) * 0.15;
+    outlineY += (mouseY - outlineY) * 0.15;
+
+    outline.style.left = `${outlineX - 15}px`;
+    outline.style.top = `${outlineY - 15}px`;
+
+    requestAnimationFrame(animate);
+}
+animate();
 
 interactiveElements.forEach(el => {
     el.addEventListener('mouseenter', () => {

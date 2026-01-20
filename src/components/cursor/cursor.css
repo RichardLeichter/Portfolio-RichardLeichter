@@ -1,3 +1,8 @@
+* {
+    cursor: none !important;
+}
+
+
 #cursor-dot {
     width: 6px;
     height: 6px;
@@ -14,7 +19,7 @@
 #cursor-outline {
     width: 30px;
     height: 30px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid #ff4f00;
     position: fixed;
     top: 0;
     left: 0;

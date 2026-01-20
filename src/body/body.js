@@ -1,18 +1,48 @@
 const textElement = document.getElementById('typewriter');
-textElement.style.whiteSpace = 'pre-line';
-const textToType = "RICHARD S. LEICHTER. \n Full-Stack Developer.";
+const phrases = ["RICHARD S. LEICHTER.", "FULL-STACK DEVELOPER."];
 
+let phraseIndex = 0;
 let charIndex = 0;
+let isDeleting = false;
 
-function typeWriter() {
-    if (charIndex < textToType.length) {
-        textElement.textContent += textToType.charAt(charIndex);
-
+function typeLoop() {
+    const currentPhrase = phrases[phraseIndex];
+    
+    if (isDeleting) {
+        textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        textElement.textContent = currentPhrase.substring(0, charIndex + 1);
         charIndex++;
-        setTimeout(typeWriter, 100);
     }
-}
+
+    let typeSpeed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typeSpeed = 500;
+     }
+
+    setTimeout(typeLoop, typeSpeed);
+ }  
+
+function setupInterface() {
+    if (!document.querySelector('nav')) {
+        const nav = document.createElement('nav');
+        nav.innerHTML = `
+            <div class="logo">RICHARD S. LEICHTER <span class="accent-text">//</span> 2026</div>
+            <div class="nav-right">
+            </div>
+        `;
+        document.body.prepend(nav);
+    }
+ }
 
 window.onload = () => {
-    setTimeout(typeWriter, 500);
+    setupInterface();
+    setTimeout(typeLoop, 500);
 }
