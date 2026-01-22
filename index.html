@@ -4,25 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+
     <link rel="stylesheet" href="src/components/cursor/cursor.css">
-    <link rel="stylesheet" href="src/body/body.css">
-    <link rel="jsconfig" href="javascript.js">    
+    <link rel="stylesheet" href="src/components/navbar/navbar.css">
+    <link rel="stylesheet" href="src/body/body.css">  
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
 
     <title>Richard S. Leichter</title>
     
 </head>
 <body>
-    <div id="cursor-dot"></div>
-    <div id="cursor-outline"></div>
+    <header class="header-nav">
+        <nav id="navbar" class="nav-box">
+            
+            <div class="nav-logo">
+                RICHARD S. LEICHTER <span class="text-orange-500 mx-1">//</span> 2026
+            </div>
 
-    <div>
-        <h1 id="typewriter" class="typewriter"></h1>
-        <p class="message">O mundo é o Front-End, nós fazemos o Back-End!</p>
-    </div>
+            <ul class="nav-list">
+                <li><a href="#home" class="nav-item">Home</a></li>
+                <li><a href="#about" class="nav-item">About</a></li>
+                <li><a href="#projetos" class="nav-item">Projetos</a></li>
+                <li><a href="#contato" class="nav-item">Contato</a></li>
+        </nav>
+    </header>
     
+    <div id="custom-mouse-dot"></div>
+    <div id="custom-mouse-ring"></div>
+
+    <main>
+        <section id="home" class="section-hero-container">
+            <div>
+                <h1 class="static-main-title">RICHARD S. LEICHTER</h1>
+                <h2 id="dynamic-typing-text" class="dynamic-typing-text"></h2>
+                <p class="hero-impact-quote">"O mundo é o front-end, nós fazemos o back-end."</p>
+            </div>
+        </section>
+
+        <section id="about" class="page-section"><h2 class="section-title">About</h2></section>
+        <section id="projetos" class="page-section"><h2 class="section-title">Projetos</h2></section>
+        <section id="contato" class="page-section"><h2 class="section-title">Contato</h2></section>
+    </main>
+
+    <script src="https://cdn.tailwindcss.com"></script>    
     <script src="src/components/cursor/cursor.js"></script>
+    <script src="src/components/navbar/navbar.js"></script>
     <script src="src/body/body.js"></script>
 </body>
 </html>

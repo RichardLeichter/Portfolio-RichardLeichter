@@ -1,5 +1,5 @@
-const textElement = document.getElementById('typewriter');
-const phrases = ["RICHARD S. LEICHTER.", "FULL-STACK DEVELOPER."];
+const textElement = document.getElementById('dynamic-typing-text');
+const phrases = ["DEVELOPER."];
 
 let phraseIndex = 0;
 let charIndex = 0;
@@ -30,19 +30,6 @@ function typeLoop() {
     setTimeout(typeLoop, typeSpeed);
  }  
 
-function setupInterface() {
-    if (!document.querySelector('nav')) {
-        const nav = document.createElement('nav');
-        nav.innerHTML = `
-            <div class="logo">RICHARD S. LEICHTER <span class="accent-text">//</span> 2026</div>
-            <div class="nav-right">
-            </div>
-        `;
-        document.body.prepend(nav);
-    }
- }
-
-window.onload = () => {
-    setupInterface();
+window.addEventListener('load', () => {
     setTimeout(typeLoop, 500);
-}
+});

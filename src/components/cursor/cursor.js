@@ -1,6 +1,6 @@
-const dot = document.getElementById('cursor-dot');
-const outline = document.getElementById('cursor-outline');
-const interactiveElements = document.querySelectorAll('a, button');
+const dot = document.getElementById('custom-mouse-dot');
+const outline = document.getElementById('custom-mouse-ring');
+const interactiveElements = document.querySelectorAll('a, button, .navbar-menu-item');
 
 let mouseX = 0;
 let mouseY = 0;

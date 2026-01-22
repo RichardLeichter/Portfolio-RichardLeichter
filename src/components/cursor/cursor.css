@@ -3,7 +3,7 @@
 }
 
 
-#cursor-dot {
+#custom-mouse-dot {
     width: 6px;
     height: 6px;
     background-color: #ff4f00;
@@ -13,10 +13,9 @@
     border-radius: 50%;
     z-index: 9999;
     pointer-events: none;
-    margin-left: -2.5px;
-    margin-top: -2.5px;
+    transform: translate(-50%, -50%);
 }
-#cursor-outline {
+#custom-mouse-ring {
     width: 30px;
     height: 30px;
     border: 1px solid #ff4f00;
