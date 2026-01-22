@@ -98,3 +98,18 @@
     transform: scale(0.5) translateX(-20px); 
     pointer-events: none; 
 }
+
+@media (max-width: 768px) {
+    .nav-box {
+        flex-direction: column !important;
+        height: auto !important;
+        padding: 1rem 0;
+        gap: 0.5rem;
+    }
+    .nav-list {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+        flex-wrap: wrap;
+    }
+}
