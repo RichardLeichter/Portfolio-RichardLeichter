@@ -10,27 +10,18 @@ let outlineY = 0;
 document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-
-    dot.style.left = `${mouseX}px`;
-    dot.style.top = `${mouseY}px`;
 });
 
 document.addEventListener('touchmove', (e) => {
     const touch = e.touches[0];
     mouseX = touch.clientX;
     mouseY = touch.clientY;
-
-    dot.style.left = `${mouseX}px`;
-    dot.style.top = `${mouseY}px`;
 }, { passive: true });
 
 document.addEventListener('touchstart', (e) => {
     const touch = e.touches[0];
     mouseX = touch.clientX;
     mouseY = touch.clientY;
-
-    dot.style.left = `${mouseX}px`;
-    dot.style.top = `${mouseY}px`;
 }, { passive: true });
 
 function animate() {
@@ -39,6 +30,9 @@ function animate() {
 
     outline.style.left = `${outlineX - 15}px`;
     outline.style.top = `${outlineY - 15}px`;
+
+    dot.style.left = `${mouseX}px`;
+    dot.style.top = `${mouseY}px`;
 
     requestAnimationFrame(animate);
 }

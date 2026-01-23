@@ -1,0 +1,51 @@
+:root { 
+    --card-bg: #0a0a0a; 
+    --orange: #ff6a00; 
+    --txt: #fff; 
+    --dim: #777; 
+}
+
+.carousel { width: 100%; overflow: hidden; padding: 3rem 0; mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent); }
+.track { display: flex; width: max-content; animation: scroll 30s linear infinite; gap: 2rem; }
+.track:has(.card:hover) { animation-play-state: paused; }
+
+@keyframes scroll { to { transform: translateX(calc(-50% - 1rem)); } }
+
+.card { 
+    position: relative; width: 320px; height: 400px; background: var(--card-bg); border-radius: 16px; border: 1px solid #1a1a1a; 
+    padding: 2.5rem; display: flex; flex-direction: column; transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: visible;
+}
+
+.card:hover { transform: translateY(-12px) scale(1.02); background: #0c0c0c; }
+
+.card::before {
+    content: ""; position: absolute; 
+    inset: -1.5px;
+    border-radius: inherit; 
+    padding: 1.5px;
+    background: radial-gradient(
+        500px circle at var(--x) var(--y), 
+        var(--orange) 0%, 
+        rgba(255, 106, 0, 0.4) 20%, 
+        transparent 60%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); 
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    opacity: 0; transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+.card:hover::before { opacity: 1; }
+
+h3 { font-size: 1.4rem; margin: 0 0 0.8rem; letter-spacing: -0.5px; color: var(--txt); }
+p { font-size: 0.95rem; color: var(--dim); line-height: 1.6; flex-grow: 1; margin: 0; }
+
+.links { display: flex; gap: 0.8rem; margin-top: 1.5rem; }
+.btn { 
+    text-decoration: none; font-size: 0.85rem; font-weight: 600; color: var(--txt); padding: 0.6rem 1.2rem; 
+    border: 1px solid #222; border-radius: 8px; transition: 0.3s;
+}
+.btn:hover { background: var(--orange); border-color: var(--orange); color: #000; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(255,106,0,0.3); }
+.btn.lkd { color: var(--orange); border-color: rgba(255,106,0,0.15); }
+.btn.lkd:hover { color: #000; }
