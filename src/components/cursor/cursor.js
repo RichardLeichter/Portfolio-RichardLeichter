@@ -2,6 +2,11 @@ const dot = document.getElementById('custom-mouse-dot');
 const outline = document.getElementById('custom-mouse-ring');
 const interactiveElements = document.querySelectorAll('a, button, .navbar-menu-item');
 
+if (window.matchMedia("(pointer: coarse)").matches) {
+    dot.style.display = 'none';
+    outline.style.display = 'none';
+}
+
 let mouseX = 0;
 let mouseY = 0;
 let outlineX = 0;
