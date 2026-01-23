@@ -2,30 +2,28 @@
     cursor: none !important;
 }
 
-
-#custom-mouse-dot {
-    width: 6px;
-    height: 6px;
-    background-color: #ff4f00;
-    position: fixed;
-    top: 0;
-    left: 0;
+#cursor {
+    width: 8px;
+    height: 8px;
+    background: var(--accent, #ff4f00);
     border-radius: 50%;
-    z-index: 9999;
+    position: fixed;
     pointer-events: none;
+    z-index: 10001;
     transform: translate(-50%, -50%);
-    will-change: top, left;
+    transition: width 0.3s, height 0.3s, background 0.3s, border 0.3s;
+    left: 0; top: 0;
 }
-#custom-mouse-ring {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ff4f00;
-    position: fixed;
-    top: 0;
-    left: 0;
+
+#cursor-follower {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 79, 0, 0.3);
     border-radius: 50%;
-    z-index: 9999;
+    position: fixed;
     pointer-events: none;
-    transition: transform 0.2s ease-out, background 0.2s ease-out;
-    will-change: top, left;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s linear, opacity 0.3s;
+    left: 0; top: 0;
 }

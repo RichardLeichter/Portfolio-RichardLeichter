@@ -1,65 +1,46 @@
-const dot = document.getElementById('custom-mouse-dot');
-const outline = document.getElementById('custom-mouse-ring');
-const interactiveElements = document.querySelectorAll('a, button, .navbar-menu-item');
+const cursor = document.getElementById('cursor');
+const follower = document.getElementById('cursor-follower');
 
 if (window.matchMedia("(pointer: coarse)").matches) {
-    dot.style.display = 'none';
-    outline.style.display = 'none';
+    cursor.style.display = 'none';
+    follower.style.display = 'none';
 }
 
-let mouseX = 0;
-let mouseY = 0;
-let outlineX = 0;
-let outlineY = 0;
+let mouseX = 0, mouseY = 0, fX = 0, fY = 0;
 
 document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
 });
 
-document.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0];
-    mouseX = touch.clientX;
-    mouseY = touch.clientY;
-}, { passive: true });
-
-document.addEventListener('touchstart', (e) => {
-    const touch = e.touches[0];
-    mouseX = touch.clientX;
-    mouseY = touch.clientY;
-}, { passive: true });
-
-function animate() {
-    outlineX += (mouseX - outlineX) * 0.15;
-    outlineY += (mouseY - outlineY) * 0.15;
-
-    outline.style.left = `${outlineX - 15}px`;
-    outline.style.top = `${outlineY - 15}px`;
-
-    dot.style.left = `${mouseX}px`;
-    dot.style.top = `${mouseY}px`;
-
-    requestAnimationFrame(animate);
+function move() {
+    fX += (mouseX - fX) * 0.12; fY += (mouseY - fY) * 0.12;
+    follower.style.left = fX + 'px'; follower.style.top = fY + 'px';
+    requestAnimationFrame(move);
 }
-animate();
+move();
 
-interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        outline.style.transform = 'scale(1.8)';
-        outline.style.background = 'rgba(30, 22, 19, 0.05)';
-    });
+const selectors = 'a, button, .nav-item, .btn, .contact-card, .massive-contact-trigger';
 
-    el.addEventListener('mouseleave', () => {
-        outline.style.transform = 'scale(1)';
-        outline.style.background = 'transparent';
-    });
+document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(selectors)) {
+        cursor.style.width = '100px'; 
+        cursor.style.height = '100px';
+        cursor.style.background = 'rgba(255, 79, 0, 0.05)';
+        cursor.style.border = '1px solid var(--accent, #ff4f00)';
+        follower.style.opacity = '0';
+    }
+});
 
-    el.addEventListener('mousedown', () => {
-        outline.style.transform = 'scale(0.9)';
-    });
-
-    el.addEventListener('mouseup', () => {
-        outline.style.transform = 'scale(1.8)';
-    });
-
+document.addEventListener('mouseout', (e) => {
+    const target = e.target.closest(selectors);
+    if (target) {
+        if (e.relatedTarget && target.contains(e.relatedTarget)) return;
+        cursor.style.width = '8px'; 
+        cursor.style.height = '8px';
+        cursor.style.background = 'var(--accent, #ff4f00)';
+        cursor.style.border = 'none';
+        follower.style.opacity = '1';
+    }
 });

@@ -4,22 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description" content="Portfólio de Richard S. Leichter - Desenvolvedor Front-end especializado em criar experiências digitais impactantes e interfaces modernas.">
+    <meta property="og:title" content="Richard S. Leichter | Desenvolvedor Front-end">
+    <meta property="og:description" content="Confira meus projetos e habilidades em desenvolvimento web.">
+    <meta property="og:type" content="website">
 
     <link rel="stylesheet" href="src/components/cursor/cursor.css">
     <link rel="stylesheet" href="src/components/navbar/navbar.css">
     <link rel="stylesheet" href="src/body/body.css">  
     <link rel="stylesheet" href="src/components/projects/projects.css">
+    <link rel="stylesheet" href="src/components/about/about.css">
+    <link rel="stylesheet" href="src/components/contact/contact.css">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
 
-    <title>Richard S. Leichter</title>
+    <title>Richard S. Leichter | Portfolio</title>
     
 </head>
 <body>
     <header class="header-nav">
         <nav id="navbar" class="nav-box">
-            
             <div class="nav-logo hidden lg:block">
-                RICHARD S. LEICHTER <span class="text-orange-500 mx-1">//</span> 2026
+                RICHARD S. LEICHTER <span class="logo-accent">//</span> 2026
             </div>
 
             <ul class="nav-list">
@@ -31,18 +37,27 @@
         </nav>
     </header>
     
-    <div id="custom-mouse-dot"></div>
-    <div id="custom-mouse-ring"></div>
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
 
     <main>
-        <section id="home" class="section-hero-container">
+        <section id="home" class="hero-section">
+            <div class="hero-bg-shapes">
+                <div class="hero-shape shape-1"></div>
+                <div class="hero-shape shape-2"></div>
+                <div class="hero-shape shape-3"></div>
+            </div>
             <div>
-                <h1 class="static-main-title">RICHARD S. LEICHTER</h1>
-                <h2 id="dynamic-typing-text" class="dynamic-typing-text"></h2>
-                <p class="hero-impact-quote">O mundo é o front-end,<br class="md:hidden"> nós fazemos o back-end/></p>
+                <h1 class="hero-title">RICHARD S. LEICHTER</h1>
+                <h2 id="typing-text" class="hero-subtitle"></h2>
+                <p class="hero-quote">
+                    <span data-text="<O mundo é o front-end,">&lt;O mundo é o front-end,</span>
+                    <br class="mobile-break">
+                    <span data-text="nós fazemos o back-end/>">nós fazemos o back-end/&gt;</span>
+                </p>
             </div>
 
-            <a href="#about" class="scroll-indicator -translate-y-16 md:translate-y-0">
+            <a href="#about" class="scroll-indicator">
                 <span>Explorar</span>
                 <div class="mouse">
                     <div class="wheel"></div>
@@ -50,21 +65,105 @@
             </a>
         </section>
 
-        <section id="about" class="page-section"><h2 class="section-title">About</h2></section>
-        
+        <section id="about" class="page-section">
+            <div class="work-header reveal">
+                <div>
+                    <span class="label-text">PERFIL</span>
+                    <h2 class="big-title">QUEM<br>SOU EU</h2>
+                </div>
+            </div>
+
+            <div class="about-content reveal">
+                <div class="about-text">
+                    <p>Sou apaixonado por programação Front-end, acredito que um visual impactante, deixa uma marca em quem visita seu site.</p>
+                    <p>Gosto muito da parte de design de UI, mas acredito que sem um bom back-end (coração do site), de nada adianta uma tela bonita sem funções.</p>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="tech-stack">
+                        <span class="stack-label">CORE STACK</span>
+                        <div class="tags">
+                            <span><i class="devicon-javascript-plain"></i> JavaScript</span>
+                            <span><i class="devicon-css3-plain"></i> CSS3</span>
+                            <span><i class="devicon-python-plain"></i> Python</span>
+                            <span><i class="devicon-typescript-plain"></i> TypeScript</span>
+                            <span><i class="devicon-tailwindcss-original"></i> Tailwind</span>
+                            <span><i class="devicon-git-plain"></i> Git</span>
+                            <span><i class="devicon-vercel-original"></i> Vercel</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stats">
+                        <div><span class="stat-num">01+</span><span class="stat-desc">ANOS EXP.</span></div>
+                        <div><span class="stat-num">5+</span><span class="stat-desc">PROJETOS</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="projetos" class="page-section">
+            <div class="work-header reveal">
+                <div>
+                    <span class="label-text">SELECÇÃO</span>
+                    <h2 class="big-title">PROJETOS<br>EM DESTAQUE</h2>
+                </div>
+            </div>
             <div class="carousel">
                 <div class="track" id="track"></div>
             </div>
         </section>
 
-        <section id="contato" class="page-section"><h2 class="section-title">Contato</h2></section>
+        <section id="contato" class="page-section">
+            <div class="contact-container">
+                <div class="contact-header reveal">
+                    <span class="contact-label">DISPONÍVEL PARA NOVOS PROJETOS</span>
+                    <p class="contact-intro">Tem uma ideia inovadora? Vamos transformá-la em realidade digital.</p>
+                </div>
+
+                <a href="mailto:richardleichter@hotmail.com" class="massive-contact-trigger reveal">
+                    <span data-text="CONTATE-ME">CONTATE-ME</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mail-icon">
+                        <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                        <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+                    </svg>
+                </a>
+
+                <button class="copy-email-box reveal" id="copyEmailBtn" aria-label="Copiar email">
+                    <span id="emailText">richardleichter@hotmail.com</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="copy-icon"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+
+                <div class="social-footer reveal">
+                    <div class="social-links">
+                        <a href="https://github.com/RichardLeichter" target="_blank" class="social-link"><i class="devicon-github-original"></i> GitHub</a>
+                        <a href="https://www.linkedin.com/in/richard-s-leichter-a33448218/" target="_blank" class="social-link"><i class="devicon-linkedin-plain"></i> LinkedIn</a>
+                    </div>
+                    <div class="location-text">
+                        Brasil / 2026
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <script src="https://cdn.tailwindcss.com"></script>    
-    <script src="src/components/cursor/cursor.js"></script>
-    <script src="src/components/navbar/navbar.js"></script>
-    <script src="src/components/projects/projects.js"></script>
-    <script src="src/body/body.js"></script>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="footer-copy">&copy; 2026 - Desenvolvido por <a href="https://github.com/RichardLeichter" target="_blank" class="footer-link">Richard S. Leichter</a></p>
+            
+            <a href="#home" class="footer-top-btn">
+                <span class="footer-top-text">Topo</span>
+                <div class="mouse footer-mouse">
+                    <div class="wheel footer-wheel"></div>
+                </div>
+            </a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="src/components/cursor/cursor.js"></script>
+    <script defer src="src/components/navbar/navbar.js"></script>
+    <script defer src="src/components/projects/projects.js"></script>
+    <script defer src="src/components/contact/contact.js"></script>
+    <script defer src="src/body/body.js"></script>
 </body>
 </html>

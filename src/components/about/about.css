@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700;800&display=swap');
+
+:root {
+    --orange: #ff6a00;
+    --txt: #fff;
+    --dim: #666;
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+.about-content {
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    margin-top: 2rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.about-text {
+    border-left: 1px solid var(--orange);
+    padding-left: 2rem;
+}
+
+.about-text p {
+    color: #e5e5e5;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.stack-label {
+    font-size: 0.7rem; 
+    letter-spacing: 4px; 
+    color: var(--orange); 
+    display: block; 
+    margin-bottom: 1.5rem; 
+    font-weight: 700;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 3rem;
+}
+
+.tags span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    color: #fff;
+    transition: 0.3s;
+    cursor: default;
+}
+
+.tags span i { font-size: 1rem; }
+
+.tags span:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+    background: rgba(255, 106, 0, 0.05);
+}
+
+.stats {
+    display: flex;
+    gap: 4rem;
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+}
+
+.stat-num {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    display: block;
+}
+
+.stat-desc { font-size: 0.8rem; color: var(--dim); margin-top: 0.5rem; letter-spacing: 1px; display: block; }
+
+@media (max-width: 768px) { .about-content { grid-template-columns: 1fr; gap: 3rem; } }
