@@ -1,20 +1,10 @@
 const projectStyles = document.createElement('style');
 projectStyles.innerHTML = `
-    @keyframes scroll-track {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-    }
-
     #track {
         display: flex;
         gap: 2.5rem;
         width: max-content;
-        animation: scroll-track 15s linear infinite;
-        will-change: transform, animation-duration;
-    }
-
-    #track:hover {
-        animation-play-state: paused;
+        will-change: transform;
     }
 
     .glass-card {
@@ -22,8 +12,8 @@ projectStyles.innerHTML = `
         min-width: 450px;
         height: 320px;
         background: rgba(255, 255, 255, 0.02);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         border-radius: 24px;
         border: 1px solid rgba(255, 255, 255, 0.05);
         padding: 2.5rem;
@@ -32,6 +22,7 @@ projectStyles.innerHTML = `
         justify-content: space-between;
         overflow: hidden;
         transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s;
+        transform: translateZ(0);
     }
 
     @media (max-width: 768px) {
@@ -126,6 +117,17 @@ const projects = [
 const track = document.getElementById('track');
 
 if (track) {
+    // Otimização: Usando Web Animations API para evitar Reflow/Layout Thrashing
+    const trackAnimation = track.animate(
+        [{ transform: 'translateX(0)' }, { transform: 'translateX(-50%)' }],
+        { duration: 15000, iterations: Infinity, easing: 'linear' }
+    );
+
+    track.addEventListener('mouseenter', () => trackAnimation.pause());
+    track.addEventListener('mouseleave', () => {
+        if (!isDragging) trackAnimation.play();
+    });
+
     [...projects, ...projects].forEach((p, index) => {
         const el = document.createElement('div');
         el.className = 'glass-card';
@@ -171,9 +173,8 @@ if (track) {
         const maxScroll = document.body.scrollHeight - window.innerHeight;
         const scrollPercent = Math.min(scrollY / maxScroll, 1);
         
-        const newDuration = 15 + (scrollPercent * 35);
-        
-        track.style.animationDuration = `${newDuration}s`;
+        const newDuration = 15000 + (scrollPercent * 35000);
+        trackAnimation.effect.updateTiming({ duration: newDuration });
     });
 
     const nav = document.createElement('div');
@@ -193,11 +194,8 @@ if (track) {
 
     function syncProgress() {
         if (!isDragging) {
-            const style = window.getComputedStyle(track);
-            const matrix = new DOMMatrix(style.transform);
-            const trackWidth = track.scrollWidth;
-            let percent = (Math.abs(matrix.m41) / (trackWidth / 2)) * 100;
-            if (percent > 100) percent = 100;
+            const timing = trackAnimation.effect.getComputedTiming();
+            let percent = (timing.progress || 0) * 100;
             progress.style.width = `${percent}%`;
             requestAnimationFrame(syncProgress);
         }
@@ -214,7 +212,7 @@ if (track) {
         const percent = (x / rect.width) * 100;
         progress.style.width = `${percent}%`;
         
-        track.style.animation = 'none';
+        trackAnimation.cancel();
         track.style.transform = `translateX(-${percent / 2}%)`;
     };
 
@@ -246,12 +244,11 @@ if (track) {
         document.removeEventListener('touchend', onDragEnd);
         
         const currentPercent = parseFloat(progress.style.width) || 0;
-        const duration = parseFloat(window.getComputedStyle(track).animationDuration) || 15;
-        const negativeDelay = (currentPercent / 100) * duration;
+        const duration = trackAnimation.effect.getTiming().duration;
         
-        track.style.animation = `scroll-track ${duration}s linear infinite`;
-        track.style.animationDelay = `-${negativeDelay}s`;
         track.style.transform = '';
+        trackAnimation.currentTime = (currentPercent / 100) * duration;
+        trackAnimation.play();
         
         requestAnimationFrame(syncProgress);
     };
