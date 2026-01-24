@@ -22,6 +22,7 @@
     
 </head>
 <body>
+    <canvas id="tech-web"></canvas>
     <header class="header-nav">
         <nav id="navbar" class="nav-box">
             <div class="nav-logo hidden lg:block">
@@ -73,29 +74,36 @@
                 </div>
             </div>
 
-            <div class="about-content reveal">
-                <div class="about-text">
-                    <p>Sou apaixonado por programação Front-end, acredito que um visual impactante, deixa uma marca em quem visita seu site.</p>
-                    <p>Gosto muito da parte de design de UI, mas acredito que sem um bom back-end (coração do site), de nada adianta uma tela bonita sem funções.</p>
+            <div class="about-content reveal flex flex-col lg:flex-row gap-12 items-start max-w-7xl mx-auto px-6">
+                <!-- Foto do Perfil -->
+                <div class="relative w-full lg:w-[320px] shrink-0 group hidden lg:block">
+                    <img src="https://github.com/RichardLeichter.png" alt="Richard S. Leichter" class="profile-image">
                 </div>
-                
-                <div class="about-grid">
-                    <div class="tech-stack">
-                        <span class="stack-label">CORE STACK</span>
-                        <div class="tags">
-                            <span><i class="devicon-javascript-plain"></i> JavaScript</span>
-                            <span><i class="devicon-css3-plain"></i> CSS3</span>
-                            <span><i class="devicon-python-plain"></i> Python</span>
-                            <span><i class="devicon-typescript-plain"></i> TypeScript</span>
-                            <span><i class="devicon-tailwindcss-original"></i> Tailwind</span>
-                            <span><i class="devicon-git-plain"></i> Git</span>
-                            <span><i class="devicon-vercel-original"></i> Vercel</span>
-                        </div>
+
+                <div class="flex-1">
+                    <div class="about-text">
+                        <p>Sou apaixonado por programação Front-end, acredito que um visual impactante, deixa uma marca em quem visita seu site.</p>
+                        <p>Gosto muito da parte de design de UI, mas acredito que sem um bom back-end (coração do site), de nada adianta uma tela bonita sem funções.</p>
                     </div>
                     
-                    <div class="stats">
-                        <div><span class="stat-num">01+</span><span class="stat-desc">ANOS EXP.</span></div>
-                        <div><span class="stat-num">5+</span><span class="stat-desc">PROJETOS</span></div>
+                    <div class="about-grid">
+                        <div class="tech-stack">
+                            <span class="stack-label">CORE STACK</span>
+                            <div class="tags">
+                                <span><i class="devicon-javascript-plain"></i> JavaScript</span>
+                                <span><i class="devicon-css3-plain"></i> CSS3</span>
+                                <span><i class="devicon-python-plain"></i> Python</span>
+                                <span><i class="devicon-typescript-plain"></i> TypeScript</span>
+                                <span><i class="devicon-tailwindcss-original"></i> Tailwind</span>
+                                <span><i class="devicon-git-plain"></i> Git</span>
+                                <span><i class="devicon-vercel-original"></i> Vercel</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stats flex gap-6">
+                            <div><span class="stat-num">01+</span><span class="stat-desc">ANOS EXP.</span></div>
+                            <div><span class="stat-num">5+</span><span class="stat-desc">PROJETOS</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -114,7 +122,7 @@
         </section>
 
         <section id="contato" class="page-section">
-            <div class="contact-container">
+            <div class="contact-container max-w-5xl mx-auto px-6">
                 <div class="contact-header reveal">
                     <span class="contact-label">DISPONÍVEL PARA NOVOS PROJETOS</span>
                     <p class="contact-intro">Tem uma ideia inovadora? Vamos transformá-la em realidade.</p>
@@ -148,7 +156,7 @@
 
     <footer class="site-footer">
         <div class="footer-container">
-            <p class="footer-copy">&copy; 2026 - Desenvolvido por <br class="block md:hidden"><a href="https://github.com/RichardLeichter" target="_blank" class="footer-link">Richard S. Leichter</a></p>
+            <p class="footer-copy text-[0.6rem] uppercase tracking-[3px]">&copy; 2026 - Desenvolvido por <br class="block md:hidden"><a href="https://github.com/RichardLeichter" target="_blank" class="footer-link">Richard S. Leichter</a></p>
             
             <a href="#home" class="footer-top-btn">
                 <span class="footer-top-text">Topo</span>
