@@ -251,6 +251,7 @@ if (track) {
         trackAnimation.play();
         
         requestAnimationFrame(syncProgress);
+    };
 
     let startX = 0;
     let startProgress = 0;
