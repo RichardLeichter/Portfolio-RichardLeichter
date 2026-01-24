@@ -251,5 +251,41 @@ if (track) {
         trackAnimation.play();
         
         requestAnimationFrame(syncProgress);
+
+    let startX = 0;
+    let startProgress = 0;
+
+    const onTrackTouchStart = (e) => {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        startProgress = parseFloat(progress.style.width) || 0;
+        trackAnimation.cancel();
     };
+
+    const onTrackTouchMove = (e) => {
+        if (e.cancelable) e.preventDefault();
+        const x = e.touches[0].clientX;
+        const dx = x - startX;
+        const trackWidth = track.scrollWidth / 2;
+        const deltaPercent = -(dx / trackWidth) * 100;
+
+        let newPercent = startProgress + deltaPercent;
+        if (newPercent < 0) newPercent = 100 + (newPercent % 100);
+        if (newPercent > 100) newPercent = newPercent % 100;
+
+        progress.style.width = `${newPercent}%`;
+        track.style.transform = `translateX(-${newPercent / 2}%)`;
+    };
+
+    const onTrackDragEnd = () => {
+        document.removeEventListener('touchmove', onTrackTouchMove);
+        document.removeEventListener('touchend', onTrackDragEnd);
+        onDragEnd();
+    };
+
+    track.addEventListener('touchstart', (e) => {
+        onTrackTouchStart(e);
+        document.addEventListener('touchmove', onTrackTouchMove, { passive: false });
+        document.addEventListener('touchend', onTrackDragEnd);
+    }, { passive: false });
 }
