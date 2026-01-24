@@ -110,8 +110,8 @@ document.head.appendChild(projectStyles);
 const projects = [
     { title: "Tear de Crônicas", desc: "Plataforma minimalista para escrita de histórias e crônicas com temas visuais dinâmicos.", link: "https://teardecronicas.vercel.app", lkd: "https://github.com/RichardLeichter/Tear_de_Cronicas", tech: ["devicon-html5-plain", "devicon-css3-plain", "devicon-javascript-plain"] },
     { title: "Palavra Secreta", desc: "Game interativo de adivinhação de palavras desenvolvido com React e lógica avançada.", link: "#", lkd: "https://github.com/RichardLeichter/Palavra_secreta", tech: ["devicon-react-original", "devicon-css3-plain"] },
-    { title: "Dashboard Corp", desc: "Interface administrativa focada em visualização de dados e performance corporativa.", link: "#", lkd: "https://github.com/RichardLeichter", tech: ["devicon-typescript-plain", "devicon-react-original", "devicon-tailwindcss-original"] },
-    { title: "API Gateway", desc: "Backend robusto para gerenciamento de microsserviços e autenticação segura.", link: "#", lkd: "https://github.com/RichardLeichter", tech: ["devicon-python-plain", "devicon-nodejs-plain"] }
+    { title: "Dashboard Corp", desc: "Esse projeto não é real, apenas demonstrativo, caso clique em Github, você será encaminhado para meu Github.", link: "#", lkd: "https://github.com/RichardLeichter", tech: ["devicon-typescript-plain", "devicon-react-original", "devicon-tailwindcss-original"] },
+    { title: "API Gateway", desc: "Esse projeto não é real, apenas demonstrativo, caso clique em Github, você será encaminhado para meu Github.", link: "#", lkd: "https://github.com/RichardLeichter", tech: ["devicon-python-plain", "devicon-nodejs-plain"] }
 ];
 
 const track = document.getElementById('track');
