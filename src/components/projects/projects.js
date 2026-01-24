@@ -206,7 +206,8 @@ if (track) {
 
     const updateDrag = (e) => {
         const rect = nav.getBoundingClientRect();
-        let x = e.clientX - rect.left;
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        let x = clientX - rect.left;
         if (x < 0) x = 0;
         if (x > rect.width) x = rect.width;
         
@@ -221,14 +222,28 @@ if (track) {
         isDragging = true;
         updateDrag(e);
         document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseup', onMouseUp);
+        document.addEventListener('mouseup', onDragEnd);
+    });
+
+    nav.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        updateDrag(e);
+        document.addEventListener('touchmove', onTouchMove, { passive: false });
+        document.addEventListener('touchend', onDragEnd);
     });
 
     const onMouseMove = (e) => updateDrag(e);
-    const onMouseUp = () => {
+    const onTouchMove = (e) => {
+        if (e.cancelable) e.preventDefault();
+        updateDrag(e);
+    };
+
+    const onDragEnd = () => {
         isDragging = false;
         document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
+        document.removeEventListener('mouseup', onDragEnd);
+        document.removeEventListener('touchmove', onTouchMove);
+        document.removeEventListener('touchend', onDragEnd);
         
         const currentPercent = parseFloat(progress.style.width) || 0;
         const duration = parseFloat(window.getComputedStyle(track).animationDuration) || 15;
