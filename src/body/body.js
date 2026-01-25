@@ -74,12 +74,10 @@ document.addEventListener('mousemove', (e) => {
     }
 });
 
-// --- Tech Web Background Logic ---
 const canvas = document.getElementById('tech-web');
 const ctx = canvas.getContext('2d');
 let particlesArray;
 
-// Ajuste o tamanho do canvas
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -116,22 +114,21 @@ class Particle {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'; // Cor dos pontos
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
         ctx.fill();
     }
     update() {
         if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
         if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
 
-        // Colisão com o mouse (Repulsão)
         let dx = mouse.x - this.x;
         let dy = mouse.y - this.y;
         let distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < 150) { // Raio de interação
+        if (distance < 150) {
             const forceDirectionX = dx / distance;
             const forceDirectionY = dy / distance;
             const force = (150 - distance) / 150;
-            const directionX = forceDirectionX * force * 5; // Força da repulsão
+            const directionX = forceDirectionX * force * 5;
             const directionY = forceDirectionY * force * 5;
             this.x -= directionX;
             this.y -= directionY;
@@ -173,7 +170,7 @@ function connect() {
             let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
             if (distance < (canvas.width / 7) * (canvas.height / 7)) {
                 opacityValue = 1 - (distance / 20000);
-                ctx.strokeStyle = 'rgba(255, 255, 255,' + opacityValue * 0.15 + ')'; // Opacidade da linha
+                ctx.strokeStyle = 'rgba(255, 255, 255,' + opacityValue * 0.15 + ')';
                 ctx.lineWidth = 1;
                 ctx.beginPath();
                 ctx.moveTo(particlesArray[a].x, particlesArray[a].y);

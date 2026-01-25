@@ -117,7 +117,6 @@ const projects = [
 const track = document.getElementById('track');
 
 if (track) {
-    // Otimização: Usando Web Animations API para evitar Reflow/Layout Thrashing
     const trackAnimation = track.animate(
         [{ transform: 'translateX(0)' }, { transform: 'translateX(-50%)' }],
         { duration: 15000, iterations: Infinity, easing: 'linear' }
