@@ -289,3 +289,6 @@ if (track) {
         document.addEventListener('touchend', onTrackDragEnd);
     }, { passive: false });
 }
+ else {
+    console.error("Erro no componente Projects: O elemento com id 'track' não foi encontrado no HTML. As seções não podem ser renderizadas.");
+}
