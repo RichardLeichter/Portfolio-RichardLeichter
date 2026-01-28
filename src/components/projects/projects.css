@@ -42,11 +42,14 @@
     .desc-text { text-align: left; max-width: 100%; }
 }
 
-.carousel { width: 100%; overflow: hidden; padding: 1rem 0 3rem; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
-.track { display: flex; width: max-content; animation: scroll 30s linear infinite; gap: 2rem; }
-.track:has(.card:hover) { animation-play-state: paused; }
-
-@keyframes scroll { to { transform: translateX(calc(-50% - 1rem)); } }
+.track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
 
 .card { 
     position: relative; width: 350px; height: 450px; background: var(--card-bg); 
