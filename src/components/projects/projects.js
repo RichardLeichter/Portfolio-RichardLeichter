@@ -3,7 +3,12 @@ projectStyles.innerHTML = `
     #projetos {
         height: auto;
         min-height: 100vh;
-        padding-bottom: 4rem;
+        padding: 6rem 0;
+        box-sizing: border-box;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     #track {
@@ -13,7 +18,7 @@ projectStyles.innerHTML = `
         width: 100%;
         max-width: 1400px;
         margin: 0 auto;
-        padding: 2rem;
+        padding: 0 2rem;
         box-sizing: border-box;
     }
 
@@ -35,9 +40,12 @@ projectStyles.innerHTML = `
     }
 
     @media (max-width: 768px) {
+        #projetos {
+            padding: 4rem 0;
+        }
         #track {
             grid-template-columns: 1fr;
-            padding: 1rem;
+            padding: 0 1rem;
             gap: 1.5rem;
         }
         .glass-card {
